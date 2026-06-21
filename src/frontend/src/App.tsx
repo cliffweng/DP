@@ -117,6 +117,12 @@ export default function App() {
           </div>
           <div className="flex items-center gap-6 text-xs font-mono text-gray-500">
             <span>{nodes.length} nodes</span>
+            <span className="tabular-nums">
+              <span className="text-gray-600">total req </span>
+              <span className={`font-bold ${stats.total_tasks > 0 ? "text-gray-200" : ""}`}>
+                {stats.total_tasks.toLocaleString()}
+              </span>
+            </span>
             <span
               className={`font-bold ${
                 isRunning ? "text-amber-400 animate-pulse" : "text-gray-600"

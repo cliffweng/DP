@@ -11,12 +11,25 @@ from .cluster import cluster
 
 logging.basicConfig(level=logging.WARNING)
 
+# Silence noisy loggers before anything starts.
+for _noisy in [
+    "uvicorn", "uvicorn.access", "uvicorn.error",
+    "distributed", "distributed.worker", "distributed.core",
+    "distributed.scheduler", "distributed.nanny", "distributed.client",
+    "distributed.protocol", "distributed.batched",
+    "tornado", "tornado.application",
+    "asyncio", "websockets",
+]:
+    logging.getLogger(_noisy).setLevel(logging.ERROR)
+
 
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     asyncio.create_task(cluster.start_broadcast_loop())
+    await cluster.start_console_loop()
     yield
     await cluster.stop()
+    await cluster.stop_console()
     await cluster._close_dask()
 
 
