@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  background: #030712;
+  color: #f9fafb;
+}
+
+/* Node animations */
+@keyframes pulse-ring {
+  0%   { r: 22; opacity: 0.9; }
+  100% { r: 46; opacity: 0; }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -24; }
+}
+
+@keyframes node-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes done-flash {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.ring-pulse {
+  animation: pulse-ring 1.1s ease-out infinite;
+}
+.ring-pulse-delayed {
+  animation: pulse-ring 1.1s ease-out 0.4s infinite;
+}
+.line-flow {
+  animation: dash-flow 0.5s linear infinite;
+}
+.node-float {
+  animation: node-float ease-in-out infinite;
+}
+.done-flash {
+  animation: done-flash 0.5s ease-in-out;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111827; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
