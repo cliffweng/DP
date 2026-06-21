@@ -2,29 +2,10 @@
 
 A real-time distributed processing visualizer built on **Dask**, **FastAPI**, and **React**. Spawn worker nodes from a browser dashboard, choose a task mode, hit **Run**, and watch the cluster animate — with live throughput, round-trip time, and overhead stats updating at 10 Hz.
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│ ⬡  Distributed Processing Dashboard            8 nodes   ● RUNNING     │
-├──────────────────┬──────────────────────────────────────────────────────┤
-│                  │                                                       │
-│  Nodes           │         ○(SIM)        ○(BND)                        │
-│  [ 4 ] −  +      │       /      \       /      \                       │
-│  [ Spawn 4 ]     │   ○(SC)    ╔══════════╗    ○(SIM)                  │
-│                  │    |       ║  COORD   ║      |                       │
-│  Task Mode       │   ○(BND)  ╚══════════╝    ○(SC)                    │
-│  ● Simulate      │       \      /       \      /                       │
-│  ○ Bond Price    │        ○(SIM)         ○(BND)                        │
-│  ○ Short-Circ.   │                                                       │
-│                  │  ● computing (amber pulse + flowing line to COORD)   │
-│  Max Calc: 2.0s  │  ● done     (green flash)                           │
-│  ──────────────  │  ● idle     (gray, floating)                        │
-│                  │  ● error    (red)                                    │
-│  [ ▶  RUN ]      │                                                       │
-│  [ RESET CLSTR ] │                                                       │
-├──────────────────┴──────────────────────────────────────────────────────┤
-│ ● CONNECTED  ● RUNNING │ 12.4/s │ 823ms │ 0.016ms │ 620 │ 8/8 │ 0err │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+### Daskboard
+![dashboard](gui.png)
+### Backend
+![backend](backend.png)
 
 ---
 
